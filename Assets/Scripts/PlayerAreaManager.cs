@@ -61,6 +61,7 @@ public class PlayerAreaManager : NetworkBehaviour
                 else
                 {
                     tempcardImg.sprite = cardImgs[0];
+                    tempcardImg.transform.localScale = new Vector3(-1, -1, 1);
                 }
             }
         }
@@ -75,6 +76,7 @@ public class PlayerAreaManager : NetworkBehaviour
                 if (tempcard.gameObject.GetComponent<NetworkObject>().OwnerClientId == NetworkManager.Singleton.LocalClientId)
                 {
                     tempcardImg.sprite = cardImgs[cardimgIndex];
+                    tempcardImg.transform.localScale = new Vector3(-1, -1, 1);
                 }
                 else
                 {
