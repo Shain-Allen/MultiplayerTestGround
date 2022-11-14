@@ -29,17 +29,17 @@ public class NetworkManagerUI : MonoBehaviour
         {
             NetworkManager.Singleton.StartHost();
             GMA.OnServerStart();
-            //player2Cam.SetActive(false);
-            //player1Cam.SetActive(true);
-            //GameBoard.worldCamera = player1Cam.GetComponent<Camera>();
+            player2Cam.SetActive(false);
+            player1Cam.SetActive(true);
+            GameBoard.worldCamera = player1Cam.GetComponent<Camera>();
             networkManageUI.SetActive(false);
         });
         clientBtn.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartClient();
-            //player1Cam.SetActive(false);
-            //player2Cam.SetActive(true);
-            //GameBoard.worldCamera = player2Cam.GetComponent<Camera>();
+            player1Cam.SetActive(false);
+            player2Cam.SetActive(true);
+            GameBoard.worldCamera = player2Cam.GetComponent<Camera>();
             networkManageUI.SetActive(false);
         });
     }

@@ -47,48 +47,51 @@ public class PlayerAreaManager : NetworkBehaviour
     [ClientRpc]
     void setCardClientRPC(int cardimgIndex)
     {
-        Debug.Log("I am " + OwnerClientId);
+        //Debug.Log("I am " + OwnerClientId);
 
-        Debug.Log("Player Area 1 card count: " + Player1Area.childCount);
-        Debug.Log("Player Area 2 card count: " + Player2Area.childCount);
-
-        for (int i = 0; i < Player1Area.childCount; i++)
+        //Debug.Log("Player Area 1 card count: " + Player1Area.childCount);
+        //Debug.Log("Player Area 2 card count: " + Player2Area.childCount);
+        if (Player1Area.childCount != 0)
         {
-            if (Player1Area.childCount == 0) return;
-
-            Transform tempcard = Player1Area.GetChild(i).gameObject.GetComponent<RectTransform>();
-            Image tempcardImg = tempcard.GetChild(0).GetComponent<Image>();
-
-            //Debug.Log("Object Belongs to " + tempcard.GetComponent<NetworkObject>().OwnerClientId);
-
-            if (tempcard.gameObject.GetComponent<NetworkObject>().OwnerClientId == NetworkManager.Singleton.LocalClientId)
+            for (int i = 0; i < Player1Area.childCount; i++)
             {
-                tempcardImg.sprite = cardImgs[cardimgIndex];
-            }
-            else
-            {
-                tempcardImg.sprite = cardImgs[0];
+                //Debug.Log("Player 1 area card index: " + i);
+
+                Transform tempcard = Player1Area.GetChild(i).gameObject.GetComponent<RectTransform>();
+                Image tempcardImg = tempcard.GetChild(0).GetComponent<Image>();
+
+                //Debug.Log("Object Belongs to " + tempcard.GetComponent<NetworkObject>().OwnerClientId);
+
+                if (tempcard.gameObject.GetComponent<NetworkObject>().OwnerClientId == NetworkManager.Singleton.LocalClientId)
+                {
+                    tempcardImg.sprite = cardImgs[cardimgIndex];
+                }
+                else
+                {
+                    tempcardImg.sprite = cardImgs[0];
+                }
             }
         }
 
-        if (Player2Area.childCount == 0) return;
-
-        for (int i = 0; i < Player2Area.childCount; i++)
+        if (Player2Area.childCount != 0)
         {
-            
-
-            Transform tempcard = Player1Area.GetChild(i).gameObject.GetComponent<RectTransform>();
-            Image tempcardImg = tempcard.GetChild(0).GetComponent<Image>();
-
-            //Debug.Log("Object Belongs to " + tempcard.GetComponent<NetworkObject>().OwnerClientId);
-
-            if (tempcard.gameObject.GetComponent<NetworkObject>().OwnerClientId == NetworkManager.Singleton.LocalClientId)
+            for (int i = 0; i < Player2Area.childCount; i++)
             {
-                tempcardImg.sprite = cardImgs[cardimgIndex];
-            }
-            else
-            {
-                tempcardImg.sprite = cardImgs[0];
+                //Debug.Log("Player 2 area card index: " + i);
+
+                Transform tempcard = Player2Area.GetChild(i).gameObject.GetComponent<RectTransform>();
+                Image tempcardImg = tempcard.GetChild(0).GetComponent<Image>();
+
+                //Debug.Log("Object Belongs to " + tempcard.GetComponent<NetworkObject>().OwnerClientId);
+
+                if (tempcard.gameObject.GetComponent<NetworkObject>().OwnerClientId == NetworkManager.Singleton.LocalClientId)
+                {
+                    tempcardImg.sprite = cardImgs[cardimgIndex];
+                }
+                else
+                {
+                    tempcardImg.sprite = cardImgs[0];
+                }
             }
         }
     }
