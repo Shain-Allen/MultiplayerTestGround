@@ -14,13 +14,7 @@ public class GameAreaManager : NetworkBehaviour
 
     public void OnServerStart()
     {
-        //Debug.Log("This ran when its not meant to");
-
-        //if(!IsServer || !IsHost) return;
-
         gameObject.GetComponent<NetworkObject>().RemoveOwnership();
-
-        //if (CNM == null) return;
 
         CNM.OnClientConnectionNotification += CNM_OnClientConnectionNotification;
     }
